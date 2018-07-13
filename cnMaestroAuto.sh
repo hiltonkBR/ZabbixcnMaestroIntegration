@@ -35,7 +35,7 @@ Injection(){
 }
 
 #Faz uma consulta na OID do endereço do server do cnMaestro e passa o valor para a varivel filtrando por URL com o egrep
-testIfCambium=$(snmpget -v2c -c private1 $ip .1.3.6.1.4.1.17713.21.3.20.2.0 | egrep -o '(http|https)://[^/"]+')
+testIfCambium=$(snmpget -v2c -c $readCommunity $ip .1.3.6.1.4.1.17713.21.3.20.2.0 | egrep -o '(http|https)://[^/"]+')
                 #O IF testa se o valor da consulta anterior é diferente do endereço do server cnMaestro que queremos configurar, caso seja ele roda a função de injeção, caso contrario apenas informa que não rodou.
         if [[  ! -z $testIfCambium && $testIfCambium != $cambiumADD ]]; then
                 printf "%s\n" "Injetando $ip ..."
