@@ -41,6 +41,6 @@ testIfCambium=$(snmpget -v2c -c $readCommunity $ip .1.3.6.1.4.1.17713.21.3.20.2.
                 printf "%s\n" "Injetando $ip ..."
                 Injection
         else
-                printf "%s\n" "o equipamento com o $ip não é um ePMP ou já está configurado..."
+                printf "%s\n" "o equipamento com o $ip já está configurado..."
         fi
 done
